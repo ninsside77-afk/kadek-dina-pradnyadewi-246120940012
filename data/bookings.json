@@ -487,5 +487,30 @@
     "ownerId": null,
     "seed": true,
     "id": "IDB-2026-0049"
+  },
+  {
+    "ormawa": "ukm kamala",
+    "nama": "dina pradnyadewi",
+    "hp": "087776768",
+    "purpose": "uhhuhujhjhjijij",
+    "peserta": 10,
+    "alat": [
+      "Meja",
+      "Mikrofon"
+    ],
+    "roomId": "lab-2b",
+    "roomName": "Lab 2B",
+    "date": "2026-11-10",
+    "start": "10.30",
+    "end": "12.30",
+    "id": "IDB-2026-0052",
+    "status": "approved",
+    "createdAt": "2026-11-10T13:50:22",
+    "decidedAt": "2026-11-10T13:50:51",
+    "decidedBy": "Petugas Kemahasiswaan",
+    "reason": "",
+    "letter": "ready",
+    "ownerId": "peminjam01",
+    "seed": false
   }
 ]
