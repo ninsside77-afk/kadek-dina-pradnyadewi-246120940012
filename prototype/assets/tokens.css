@@ -1,0 +1,96 @@
+/* ==========================================================================
+   TOKEN DESAIN — Sistem Peminjaman Ruangan IDB Bali
+   Sumber warna & tipografi: situs resmi idbbali.ac.id (terverifikasi)
+   Nilai bertanda "turunan" dihitung dari token resmi, bukan warna merek.
+   ========================================================================== */
+
+@import url("fonts/fonts.css?v=3");
+
+:root {
+  /* Warna inti */
+  --c-ink: #1f1f1f;
+  --c-ink-2: #54595f;
+  --c-ink-3: #959595;
+  --c-line: #eaeaea;
+  --c-line-soft: #f1f3f4;
+  --c-surface: #ffffff;
+  --c-surface-2: #f4f6f7;
+
+  --c-primary: #024d71;
+  --c-primary-hover: #013a56;
+  --c-primary-soft: #e6f1f6;
+
+  --c-accent: #f17711;
+  --c-accent-hover: #de6a0c;
+  --c-accent-soft: #fff1dc;
+  --c-accent-ink: #7a4300;
+
+  /* Warna merek dari logotype resmi (teal & oranye), dipakai sebagai aksen. */
+  --c-brand: #007c91;
+  --c-brand-soft: #e9f3f5;
+  --c-brand-orange: #f7921d;
+  --c-brand-orange-soft: #fff4e5;
+
+  /* Status */
+  --c-pending-bg: #fff1dc;
+  --c-pending-ink: #7a4300;
+  --c-success-bg: #e4f2f0;
+  --c-success-ink: #0b5450;
+  --c-danger-bg: #fbe9e9;
+  --c-danger-ink: #8e1b1b;
+  --c-neutral-bg: #eceef0;
+  --c-neutral-ink: #4a4f55;
+
+  --c-border-strong: #767e84;
+  --c-focus: #024d71;
+  --c-focus-on-dark: #f7921d;
+
+  /* Tipografi */
+  --font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, monospace;
+
+  --fs-display: clamp(2rem, 1.4rem + 2.2vw, 2.75rem);
+  --fs-h1: 1.75rem;
+  --fs-h2: 1.375rem;
+  --fs-h3: 1.125rem;
+  --fs-body: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.8125rem;
+  --fs-micro: 0.75rem;
+
+  --lh-tight: 1.12;
+  --lh-snug: 1.35;
+  --lh-body: 1.6;
+  --tracking-label: 0.08em;
+
+  /* Spasi */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+
+  /* Bentuk */
+  --r-1: 4px;
+  --r-2: 8px;
+  --r-full: 999px;
+  --shadow-overlay: 0 8px 24px rgba(31, 31, 31, 0.12), 0 1px 2px rgba(31, 31, 31, 0.08);
+
+  /* Gerak */
+  --dur-1: 120ms;
+  --dur-2: 220ms;
+  --dur-3: 420ms;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+
+  /* Layout */
+  --w-content: 1200px;
+  --w-wide: 1360px;
+  --header-h: 76px;
+  --h-control-md: 40px;
+  --h-control-lg: 48px;
+  --target-min: 44px;
+}

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Periksa Pengajuan — Petugas IDB Bali</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="assets/tokens.css?v=5" />
+    <link rel="stylesheet" href="assets/app.css?v=7" />
+    <link rel="stylesheet" href="assets/pages.css?v=10" />
+    <link rel="stylesheet" href="assets/staff.css?v=4" />
+  </head>
+  <body class="staff-body">
+    <a class="skip" href="#main">Lewati ke konten</a>
+
+    <div class="staff">
+      <aside class="rail">
+        <div class="rail__brand">
+          <img src="assets/logo-idb.png" alt="IDB Bali" width="813" height="532" />
+          <span class="rail__brand-text">IDB · PETUGAS</span>
+        </div>
+
+        <nav class="rail__nav" aria-label="Navigasi petugas">
+          <a class="rail__link" href="petugas.html">
+            Daftar Pengajuan
+            <span class="rail__count" id="rail-pending">0</span>
+          </a>
+          <a class="rail__link" href="petugas-riwayat.html">Riwayat Keputusan</a>
+          <a class="rail__link rail__link--soft" href="ruangan.html">Papan Jadwal</a>
+        </nav>
+
+        <div class="rail__user">
+          <p class="rail__user-name" data-officer-name>Petugas</p>
+          <p class="rail__user-role">Bagian Kemahasiswaan</p>
+          <button class="rail__logout" type="button" data-logout>Keluar</button>
+        </div>
+      </aside>
+
+      <main id="main" class="staff-main">
+        <nav class="breadcrumb" aria-label="Remah roti">
+          <a href="petugas.html">Daftar Pengajuan</a>
+          <span aria-hidden="true">/</span>
+          <span id="crumb-id">Periksa</span>
+        </nav>
+
+        <div id="loading" class="skeleton-detail" aria-hidden="true">
+          <span class="skeleton skeleton--sm"></span>
+          <span class="skeleton skeleton--xl"></span>
+          <span class="skeleton skeleton--md"></span>
+        </div>
+
+        <div id="notfound" class="empty empty--staff" hidden>
+          <h1>Pengajuan tidak ditemukan</h1>
+          <p>Nomor pengajuan tidak ditemukan.</p>
+          <a class="btn btn--outline" href="petugas.html">Kembali ke daftar</a>
+        </div>
+
+        <div id="detail" hidden>
+          <header class="staff-detail-head">
+            <div>
+              <div class="detail-head__id">
+                <h1 id="detail-id">IDB-2026-0000</h1>
+                <span class="badge" id="detail-badge"></span>
+              </div>
+              <p class="lede" id="detail-purpose"></p>
+              <p class="staff-detail-meta" id="detail-meta"></p>
+            </div>
+            <a class="btn btn--outline btn--sm" href="petugas.html">Kembali ke daftar</a>
+          </header>
+
+          <div class="detail-grid staff-detail-grid">
+            <div class="detail-main">
+              <section class="panel" aria-labelledby="pd-peminjam">
+                <div class="panel__head">
+                  <h2 id="pd-peminjam">Peminjam</h2>
+                </div>
+                <dl class="data-list">
+                  <div><dt>ORMAWA/Prodi</dt><dd id="pd-ormawa"></dd></div>
+                  <div><dt>Nama mahasiswa</dt><dd id="pd-nama"></dd></div>
+                  <div><dt>Nomor HP</dt><dd id="pd-hp"></dd></div>
+                </dl>
+              </section>
+
+              <section class="panel" aria-labelledby="pd-pinjam">
+                <div class="panel__head">
+                  <h2 id="pd-pinjam">Peminjaman</h2>
+                </div>
+                <dl class="data-list">
+                  <div><dt>Ruangan</dt><dd id="pd-ruangan"></dd></div>
+                  <div><dt>Tanggal</dt><dd id="pd-tanggal"></dd></div>
+                  <div><dt>Waktu</dt><dd id="pd-waktu"></dd></div>
+                  <div><dt>Durasi</dt><dd id="pd-durasi"></dd></div>
+                  <div><dt>Jumlah peserta</dt><dd id="pd-peserta"></dd></div>
+                  <div class="data-list__wide">
+                    <dt>Keperluan</dt>
+                    <dd id="pd-keperluan"></dd>
+                  </div>
+                  <div class="data-list__wide">
+                    <dt>Kebutuhan alat</dt>
+                    <dd id="pd-alat"></dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section class="panel" aria-labelledby="pd-jadwal">
+                <div class="panel__head">
+                  <h2 id="pd-jadwal">Pemeriksaan jadwal</h2>
+                  <span class="panel__meta" id="schedule-room"></span>
+                </div>
+                <div class="schedule-check" id="schedule-check"></div>
+                <p class="panel__note" id="schedule-note"></p>
+                <a class="btn btn--ghost btn--sm" id="board-link" href="ruangan.html">
+                  Buka papan jadwal
+                </a>
+              </section>
+            </div>
+
+            <aside class="detail-side">
+              <section class="panel panel--decision" aria-labelledby="decision-title">
+                <div class="panel__head">
+                  <h2 id="decision-title">Keputusan</h2>
+                </div>
+                <div id="decision-body"></div>
+              </section>
+
+              <section class="panel" aria-labelledby="pd-riwayat">
+                <div class="panel__head">
+                  <h2 id="pd-riwayat">Riwayat</h2>
+                </div>
+                <ol class="timeline" id="timeline"></ol>
+              </section>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="dialog" id="approve-dialog" aria-labelledby="approve-title">
+      <form id="approve-form" novalidate>
+        <h2 id="approve-title">Setujui pengajuan ini?</h2>
+        <p class="dialog__lede" id="approve-summary"></p>
+
+        <div class="banner banner--warn" id="approve-warn" hidden>
+          <div>
+            <p class="banner__title">Periksa jadwal lain pada waktu yang sama.</p>
+            <p id="approve-warn-text"></p>
+          </div>
+        </div>
+
+        <label class="ack">
+          <input type="checkbox" id="approve-ack" />
+          Saya sudah memeriksa jadwal ruangan ini dan data pengajuan.
+        </label>
+        <p class="err" id="approve-err" hidden></p>
+
+        <div class="dialog__actions">
+          <button class="btn btn--ghost" type="button" data-close>Batal</button>
+          <button class="btn btn--primary" type="submit" id="approve-confirm">
+            Setujui pengajuan
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="dialog" id="reject-dialog" aria-labelledby="reject-title">
+      <form id="reject-form" novalidate>
+        <h2 id="reject-title">Tolak pengajuan ini?</h2>
+        <p class="dialog__lede" id="reject-summary"></p>
+
+        <div class="field">
+          <label for="reject-reason">Alasan penolakan (opsional)</label>
+          <textarea
+            class="textarea"
+            id="reject-reason"
+            maxlength="300"
+            rows="4"
+            placeholder="Misalnya: ruangan digunakan untuk kegiatan akademik pada waktu tersebut."
+          ></textarea>
+          <div class="field__foot">
+            <span class="hint">Alasan membantu peminjam memperbaiki pengajuan.</span>
+            <span class="field__count" id="reject-count">0/300</span>
+          </div>
+        </div>
+
+        <div class="dialog__actions">
+          <button class="btn btn--ghost" type="button" data-close>Batal</button>
+          <button class="btn btn--danger" type="submit" id="reject-confirm">Tolak pengajuan</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="assets/store.js?v=5" defer></script>
+    <script src="assets/ui.js?v=4" defer></script>
+    <script src="assets/petugas-detail.js?v=3" defer></script>
+  </body>
+</html>

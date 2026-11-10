@@ -1,0 +1,8 @@
+Total messages: 1 (Errors: 1, Warnings: 0)
+Returning 5 messages for level "error"
+
+[ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:8080/assets/fonts/fonts/montserrat-700.woff2:0
+[ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:8080/assets/fonts/fonts/montserrat-400.woff2:0
+[ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:8080/assets/fonts/fonts/montserrat-600.woff2:0
+[ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:8080/fonts/fonts.css?v=2:0
+[ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:8080/fonts/fonts.css?v=2:0

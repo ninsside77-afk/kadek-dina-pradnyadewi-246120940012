@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Masuk — Reservasi Ruangan IDB Bali</title>
+    <meta
+      name="description"
+      content="Masuk ke Sistem Reservasi dan Peminjaman Ruangan IDB Bali menggunakan ID pengguna dan kata sandi."
+    />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="assets/tokens.css?v=5" />
+    <link rel="stylesheet" href="assets/app.css?v=7" />
+    <link rel="stylesheet" href="assets/pages.css?v=10" />
+  </head>
+  <body class="authv2-body">
+    <a class="skip" href="#main">Lewati ke konten</a>
+
+    <main id="main" class="authv2">
+      <section class="authv2__panel" aria-labelledby="auth-title">
+        <div class="authv2__inner">
+          <div class="authv2__brand">
+            <img
+              src="assets/logo-idb.png"
+              alt="Institut Desain dan Bisnis Bali"
+              width="813"
+              height="532"
+            />
+          </div>
+
+          <header class="authv2__head">
+            <p class="authv2__kicker">Sistem Peminjaman Ruangan</p>
+            <h1 id="auth-title">Reservasi Ruangan</h1>
+            <p class="authv2__lede">
+              Sistem peminjaman dan pengelolaan penggunaan ruangan IDB Bali.
+            </p>
+          </header>
+
+          <div class="authv2__notice" id="auth-reason" role="status" hidden>
+            <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+              <circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.6" />
+              <path d="M10 9v4.2M10 6.4v.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+            <p id="auth-reason-text"></p>
+          </div>
+
+          <div class="authv2__session" id="session-panel" hidden>
+            <span class="authv2__session-mark" aria-hidden="true">
+              <svg viewBox="0 0 20 20" focusable="false">
+                <path d="m5.5 10.2 2.8 2.8 6.2-6.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <div class="authv2__session-copy">
+              <p class="authv2__session-title">Anda sudah masuk.</p>
+              <p class="authv2__session-meta" id="session-meta"></p>
+            </div>
+            <div class="authv2__session-actions">
+              <a class="authv2__btn authv2__btn--primary authv2__btn--small" href="pengajuan-saya.html" id="session-continue">Lanjutkan</a>
+              <button class="authv2__btn authv2__btn--ghost authv2__btn--small" type="button" id="session-logout">
+                Keluar
+              </button>
+            </div>
+          </div>
+
+          <form id="form-masuk" class="authv2__form" novalidate>
+            <fieldset class="authv2__roles">
+              <legend class="authv2__legend">Masuk sebagai</legend>
+              <div class="authv2__role-grid">
+                <label class="authv2__role">
+                  <input type="radio" name="peran" value="peminjam" checked />
+                  <span class="authv2__role-icon" aria-hidden="true">
+                    <svg viewBox="0 0 20 20" focusable="false">
+                      <circle cx="10" cy="6.6" r="3.1" fill="none" stroke="currentColor" stroke-width="1.6" />
+                      <path d="M4.2 16.3c.5-3.1 2.8-4.8 5.8-4.8s5.3 1.7 5.8 4.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    </svg>
+                  </span>
+                  <span class="authv2__role-copy">
+                    <span class="authv2__role-title">Peminjam</span>
+                    <span class="authv2__role-desc">Mahasiswa &amp; organisasi</span>
+                  </span>
+                  <span class="authv2__role-check" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" focusable="false">
+                      <path d="m2.5 6.2 2.2 2.2 4.8-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </label>
+
+                <label class="authv2__role">
+                  <input type="radio" name="peran" value="petugas" />
+                  <span class="authv2__role-icon" aria-hidden="true">
+                    <svg viewBox="0 0 20 20" focusable="false">
+                      <path d="M10 2.9 4.5 5v4.3c0 3.5 2.2 6.1 5.5 7.3 3.3-1.2 5.5-3.8 5.5-7.3V5L10 2.9Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                      <path d="m7.4 9.9 1.8 1.8 3.4-3.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <span class="authv2__role-copy">
+                    <span class="authv2__role-title">Petugas Kemahasiswaan</span>
+                    <span class="authv2__role-desc">Verifikasi pengajuan</span>
+                  </span>
+                  <span class="authv2__role-check" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" focusable="false">
+                      <path d="m2.5 6.2 2.2 2.2 4.8-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field authv2__field">
+              <label for="id-pengguna">ID Pengguna</label>
+              <div class="authv2__control">
+                <span class="authv2__control-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" focusable="false">
+                    <circle cx="10" cy="6.6" r="3.1" fill="none" stroke="currentColor" stroke-width="1.6" />
+                    <path d="M4.2 16.3c.5-3.1 2.8-4.8 5.8-4.8s5.3 1.7 5.8 4.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                </span>
+                <input
+                  class="input authv2__input"
+                  id="id-pengguna"
+                  name="id_pengguna"
+                  type="text"
+                  autocomplete="username"
+                  autocapitalize="none"
+                  spellcheck="false"
+                  maxlength="64"
+                  placeholder="Masukkan ID peminjam"
+                  required
+                />
+              </div>
+              <p class="err" id="err-id" hidden></p>
+            </div>
+
+            <div class="field authv2__field">
+              <label for="kata-sandi">Kata Sandi</label>
+              <div class="authv2__control">
+                <span class="authv2__control-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" focusable="false">
+                    <rect x="4.2" y="8.6" width="11.6" height="8" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.6" />
+                    <path d="M6.8 8.6V6.9a3.2 3.2 0 0 1 6.4 0v1.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <path d="M10 11.8v2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                  </svg>
+                </span>
+                <input
+                  class="input authv2__input authv2__input--password"
+                  id="kata-sandi"
+                  name="kata_sandi"
+                  type="password"
+                  autocomplete="current-password"
+                  maxlength="200"
+                  placeholder="Masukkan kata sandi"
+                  required
+                />
+                <button
+                  class="authv2__toggle"
+                  id="toggle-password"
+                  type="button"
+                  aria-pressed="false"
+                  aria-label="Tampilkan kata sandi"
+                >
+                  <span id="toggle-password-label">Tampilkan</span>
+                </button>
+              </div>
+              <p class="err" id="err-password" hidden></p>
+            </div>
+
+            <p class="err authv2__alert" id="login-error" role="alert" hidden></p>
+
+            <button class="authv2__btn authv2__btn--primary authv2__submit" type="submit" id="btn-masuk">
+              <span class="authv2__spinner" aria-hidden="true"></span>
+              <span id="btn-masuk-label">Masuk</span>
+            </button>
+          </form>
+
+          <p class="authv2__note" id="auth-note" aria-live="polite">
+            Gunakan akun Peminjam yang terdaftar. Peran yang dipilih harus cocok dengan data akun.
+          </p>
+
+          <p class="authv2__copyright">© 2026 Institut Desain dan Bisnis Bali</p>
+        </div>
+      </section>
+
+      <aside class="authv2__visual" aria-label="Aktivitas kampus IDB Bali">
+        <img
+          class="authv2__photo"
+          src="assets/campus-activity-1.jpg"
+          alt="Mahasiswa IDB Bali menyelesaikan karya instalasi di area kampus"
+          width="1920"
+          height="1280"
+        />
+        <span class="authv2__scrim" aria-hidden="true"></span>
+
+        <div class="authv2__visual-inner">
+          <div class="authv2__visual-brand">
+            <img
+              src="assets/logo-idb-white.png"
+              alt="IDB Bali — Institut Desain dan Bisnis Bali"
+              width="813"
+              height="532"
+            />
+          </div>
+
+          <div class="authv2__visual-copy">
+            <span class="authv2__accent" aria-hidden="true"></span>
+            <p class="authv2__place">Denpasar, Bali</p>
+            <h2>Satu ruang untuk setiap kegiatan kampus.</h2>
+            <p>Ajukan, periksa, dan pantau peminjaman ruangan dalam satu alur yang tercatat.</p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="assets/store.js?v=5" defer></script>
+    <script src="assets/ui.js?v=4" defer></script>
+    <script src="assets/masuk.js?v=7" defer></script>
+  </body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ajukan Peminjaman — Peminjaman Ruangan IDB Bali</title>
+    <meta
+      name="description"
+      content="Formulir pengajuan peminjaman ruangan IDB Bali."
+    />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="assets/tokens.css?v=5" />
+    <link rel="stylesheet" href="assets/app.css?v=7" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Lewati ke konten</a>
+
+    <div class="brandbar">
+      <div class="shell brandbar__inner">
+        <p class="brandbar__campus">
+          <span class="brandbar__mark" aria-hidden="true"></span>
+          <span class="brandbar__full">Institut Desain dan Bisnis Bali</span>
+          <span class="brandbar__short">IDB Bali</span>
+          <span class="brandbar__sep" aria-hidden="true">/</span>
+          <span class="brandbar__place">Denpasar, Bali</span>
+        </p>
+        <div class="brandbar__meta">
+          <span data-today>Sab, 24 Okt 2026</span>
+          <span class="brandbar__sep" aria-hidden="true">·</span>
+          <span>WITA</span>
+          <a class="brandbar__link" href="https://www.idbbali.ac.id/" target="_blank" rel="noopener"
+            >Situs kampus <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="shell header__inner">
+        <a class="brand" href="index.html" aria-label="IDB Bali — Beranda">
+          <img
+            src="assets/logo-idb.png"
+            alt="IDB Bali — Institut Desain dan Bisnis Bali"
+            width="813"
+            height="532"
+          />
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Navigasi utama">
+          <a class="nav__link" href="ruangan.html">Ruangan &amp; Jadwal</a>
+          <a class="nav__link" href="pengajuan-saya.html">Pengajuan Saya</a>
+        </nav>
+
+        <div class="header__actions">
+          <a class="link-muted" href="masuk.html" data-auth-link>Masuk</a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav"
+            data-nav-toggle
+          >
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="form-page">
+      <div class="shell">
+        <div class="form-layout">
+          <div>
+            <a class="back" href="ruangan.html">
+              <span aria-hidden="true">â†</span> Ruangan &amp; Jadwal
+            </a>
+
+            <div class="form-head">
+              <p class="eyebrow">Pengajuan Peminjaman</p>
+              <h1>Ajukan Peminjaman</h1>
+              <p class="lede">
+                Isi data peminjam, waktu, dan keperluan. Pengajuan diperiksa Bagian Kemahasiswaan
+                sebelum disetujui; pengajuan yang baru dikirim belum berarti disetujui.
+              </p>
+
+              <nav class="form-nav" aria-label="Bagian formulir">
+                <a href="#bagian-peminjam"><span>01</span> Peminjam</a>
+                <a href="#bagian-waktu"><span>02</span> Waktu &amp; ruangan</a>
+                <a href="#bagian-keperluan"><span>03</span> Keperluan</a>
+                <a href="#bagian-kirim"><span>04</span> Kirim</a>
+              </nav>
+            </div>
+
+            <div
+              class="banner banner--danger"
+              id="error-summary"
+              role="alert"
+              tabindex="-1"
+              hidden
+            >
+              <div>
+                <p class="banner__title">
+                  Mohon lengkapi kolom yang wajib diisi sebelum mengirim pengajuan.
+                </p>
+                <ol id="error-list"></ol>
+              </div>
+            </div>
+
+            <form id="form-pengajuan" novalidate>
+              <fieldset id="bagian-peminjam">
+                <legend>01 · Peminjam</legend>
+
+                <div class="fields">
+                  <div class="field" data-field="ormawa">
+                    <label for="ormawa">Nama ORMAWA/Prodi <span class="req">*</span></label>
+                    <input
+                      class="input"
+                      id="ormawa"
+                      name="ormawa"
+                      type="text"
+                      autocomplete="organization"
+                      maxlength="100"
+                      required
+                      aria-describedby="err-ormawa"
+                    />
+                    <p class="err" id="err-ormawa" hidden></p>
+                  </div>
+
+                  <div class="field" data-field="nama">
+                    <label for="nama">Nama mahasiswa <span class="req">*</span></label>
+                    <input
+                      class="input"
+                      id="nama"
+                      name="nama"
+                      type="text"
+                      autocomplete="name"
+                      maxlength="100"
+                      required
+                      aria-describedby="err-nama"
+                    />
+                    <p class="err" id="err-nama" hidden></p>
+                  </div>
+
+                  <div class="field" data-field="hp">
+                    <label for="hp">Nomor HP untuk bukti konfirmasi <span class="req">*</span></label>
+                    <input
+                      class="input"
+                      id="hp"
+                      name="hp"
+                      type="tel"
+                      inputmode="tel"
+                      autocomplete="tel"
+                      placeholder="0812 3456 7890"
+                      required
+                      aria-describedby="hint-hp err-hp"
+                    />
+                    <p class="hint" id="hint-hp">Dipakai petugas untuk mengonfirmasi pengajuan.</p>
+                    <p class="err" id="err-hp" hidden></p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset id="bagian-waktu">
+                <legend>02 · Waktu &amp; ruangan</legend>
+
+                <div class="fields">
+                  <div class="field date-field" data-field="tanggal" data-datepicker data-allow-sunday="false">
+                    <span class="label" id="lbl-tanggal">Hari/tanggal peminjaman <span class="req">*</span></span>
+                    <div class="date-control">
+                      <button
+                        type="button"
+                        class="date-trigger"
+                        id="tanggal-trigger"
+                        data-trigger
+                        aria-expanded="false"
+                        aria-haspopup="dialog"
+                        aria-labelledby="lbl-tanggal tanggal-nilai"
+                        aria-describedby="hint-tanggal err-tanggal"
+                        data-empty="true"
+                      >
+                        <span data-display id="tanggal-nilai">Pilih tanggal</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <rect x="1.5" y="2.5" width="13" height="12" rx="1.5" stroke="#54595F" />
+                          <path d="M1.5 6.5h13M5 1v3M11 1v3" stroke="#54595F" />
+                        </svg>
+                      </button>
+                      <div
+                        class="picker"
+                        data-picker
+                        hidden
+                        role="dialog"
+                        aria-label="Pilih tanggal"
+                      ></div>
+                    </div>
+                    <input type="hidden" data-input name="tanggal" />
+                    <p class="hint" id="hint-tanggal">Peminjaman tidak tersedia pada hari Minggu.</p>
+                    <p class="err" id="err-tanggal" hidden></p>
+                  </div>
+
+                  <div class="field" data-field="ruangan">
+                    <label for="ruangan">Nama ruangan <span class="req">*</span></label>
+                    <select
+                      class="select"
+                      id="ruangan"
+                      name="ruangan"
+                      required
+                      aria-describedby="err-ruangan"
+                    >
+                      <option value="">Pilih ruangan</option>
+                    </select>
+                    <p class="err" id="err-ruangan" hidden></p>
+                  </div>
+
+                  <div class="field field--full" data-field="ruangan-lain" hidden>
+                    <label for="ruangan-lain">Nama ruangan yang belum terdaftar</label>
+                    <input
+                      class="input"
+                      id="ruangan-lain"
+                      name="ruangan_lain"
+                      type="text"
+                      maxlength="100"
+                      aria-describedby="hint-ruangan-lain err-ruangan-lain"
+                    />
+                    <p class="hint" id="hint-ruangan-lain">
+                      Ruangan ini belum tercantum dalam daftar. Pengajuan perlu diperiksa oleh
+                      petugas.
+                    </p>
+                    <p class="err" id="err-ruangan-lain" hidden></p>
+                  </div>
+
+                  <div class="field" data-field="mulai">
+                    <label for="mulai">Waktu mulai <span class="req">*</span></label>
+                    <div class="field__row">
+                      <select
+                        class="select"
+                        id="mulai"
+                        name="mulai"
+                        required
+                        aria-describedby="err-mulai"
+                      >
+                        <option value="">Pilih</option>
+                      </select>
+                      <span class="field__suffix">WITA</span>
+                    </div>
+                    <p class="err" id="err-mulai" hidden></p>
+                  </div>
+
+                  <div class="field" data-field="selesai">
+                    <label for="selesai">Waktu selesai <span class="req">*</span></label>
+                    <div class="field__row">
+                      <select
+                        class="select"
+                        id="selesai"
+                        name="selesai"
+                        required
+                        aria-describedby="hint-selesai err-selesai"
+                      >
+                        <option value="">Pilih</option>
+                      </select>
+                      <span class="field__suffix">WITA</span>
+                    </div>
+                    <p class="hint" id="hint-selesai">Durasi muncul pada ringkasan.</p>
+                    <p class="err" id="err-selesai" hidden></p>
+                  </div>
+
+                  <div class="field" data-field="peserta">
+                    <label for="peserta">Jumlah peserta <span class="req">*</span></label>
+                    <input
+                      class="input"
+                      id="peserta"
+                      name="peserta"
+                      type="number"
+                      inputmode="numeric"
+                      min="1"
+                      step="1"
+                      required
+                      aria-describedby="hint-peserta err-peserta"
+                    />
+                    <p class="hint" id="hint-peserta">Sesuaikan dengan kapasitas ruangan.</p>
+                    <p class="err" id="err-peserta" hidden></p>
+                  </div>
+                </div>
+
+                <div class="banner banner--warn" id="clash-banner" hidden>
+                  <div>
+                    <p class="banner__title">Waktu yang dipilih bertabrakan dengan jadwal lain.</p>
+                    <p>Silakan pilih waktu berbeda atau tunggu pemeriksaan petugas.</p>
+                    <label class="ack">
+                      <input type="checkbox" id="ack-jadwal" name="ack_jadwal" />
+                      Saya memahami jadwal akan diperiksa petugas.
+                    </label>
+                    <p class="err" id="err-ack" hidden></p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset id="bagian-keperluan">
+                <legend>03 · Keperluan</legend>
+
+                <div class="fields">
+                  <div class="field field--full" data-field="keperluan">
+                    <label for="keperluan">Keperluan peminjaman ruangan <span class="req">*</span></label>
+                    <textarea
+                      class="textarea"
+                      id="keperluan"
+                      name="keperluan"
+                      maxlength="500"
+                      required
+                      aria-describedby="hint-keperluan err-keperluan"
+                    ></textarea>
+                    <div class="hint" style="display: flex; justify-content: space-between; gap: 16px">
+                      <span id="hint-keperluan">Misalnya: rapat kerja ORMAWA, kuliah pengganti, dokumentasi kegiatan.</span>
+                      <span class="char-count" id="char-keperluan" aria-hidden="true">0/500</span>
+                    </div>
+                    <p class="err" id="err-keperluan" hidden></p>
+                  </div>
+
+                  <div class="field field--full" data-field="alat">
+                    <span class="label">Kebutuhan alat</span>
+                    <div class="checks">
+                      <label class="check"><input type="checkbox" name="alat" value="Kursi" /> Kursi</label>
+                      <label class="check"><input type="checkbox" name="alat" value="Meja" /> Meja</label>
+                      <label class="check"><input type="checkbox" name="alat" value="Mikrofon" /> Mikrofon</label>
+                      <label class="check"><input type="checkbox" name="alat" value="Proyektor" /> Proyektor</label>
+                      <label class="check"><input type="checkbox" name="alat" value="Layar" /> Layar</label>
+                    </div>
+                    <p class="hint">
+                      Pencatatan kebutuhan alat tidak otomatis menjamin ketersediaannya.
+                    </p>
+                  </div>
+
+                  <div class="field" data-field="alat-lain">
+                    <label for="alat-lain">Alat lain</label>
+                    <input
+                      class="input"
+                      id="alat-lain"
+                      name="alat_lain"
+                      type="text"
+                      maxlength="100"
+                      placeholder="Misalnya kabel HDMI, tripod"
+                    />
+                  </div>
+                </div>
+              </fieldset>
+
+              <details class="summary-mobile">
+                <summary>
+                  <span>Ringkasan pengajuan</span>
+                  <span aria-hidden="true">â–¾</span>
+                </summary>
+                <div class="summary__list" id="summary-mobile"></div>
+              </details>
+
+              <div class="banner banner--danger" id="save-error" role="alert" tabindex="-1" hidden>
+                <div>
+                  <p class="banner__title">Pengajuan belum berhasil disimpan.</p>
+                  <p>Silakan coba kembali. Isian formulir tetap ada di halaman ini.</p>
+                </div>
+                <button class="btn btn--outline btn--sm" type="button" id="btn-retry-save">
+                  Coba lagi
+                </button>
+              </div>
+
+              <div class="form-actions" id="bagian-kirim">
+                <p class="form-actions__note">
+                  Pengajuan tersimpan dengan status Menunggu Pemeriksaan, bukan langsung disetujui.
+                </p>
+                <button class="btn btn--accent btn--lg" type="submit" id="btn-submit">
+                  Kirim Pengajuan
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <aside class="summary" aria-label="Ringkasan pengajuan">
+            <h2>Ringkasan</h2>
+            <div class="summary__list" id="summary-desktop"></div>
+            <p class="summary__note">
+              Ringkasan ini belum menjadi pengajuan. Periksa kembali sebelum menekan Kirim.
+            </p>
+          </aside>
+        </div>
+
+        <section class="success" id="success" aria-labelledby="success-title" tabindex="-1" hidden>
+          <div class="success__rule"></div>
+          <p class="eyebrow" style="margin-top: 20px">Pengajuan terkirim</p>
+          <h2 id="success-title">Menunggu pemeriksaan</h2>
+          <div class="success__id">
+            <span id="success-id">IDB-2026-0000</span>
+            <span class="badge badge--pending">Menunggu Pemeriksaan</span>
+          </div>
+          <p class="lede" style="margin-top: 16px">
+            Pengajuan berhasil dikirim dan sedang menunggu pemeriksaan Bagian Kemahasiswaan.
+          </p>
+
+          <dl class="success__grid" id="success-summary"></dl>
+
+          <div class="success__next">
+            <h3>Apa berikutnya</h3>
+            <ol>
+              <li>Bagian Kemahasiswaan memeriksa data dan jadwal ruangan.</li>
+              <li>Status berubah setelah keputusan tersimpan; pantau pada halaman pengajuan.</li>
+              <li>Status surat dapat dilihat pada halaman pengajuan setelah keputusan.</li>
+            </ol>
+          </div>
+
+          <div class="success__actions">
+            <a class="btn btn--primary" href="pengajuan-saya.html" id="link-status">
+              Lihat status pengajuan
+            </a>
+            <button class="btn btn--outline" type="button" id="btn-new">Buat pengajuan baru</button>
+            <a class="btn btn--ghost" href="ruangan.html">Lihat jadwal ruangan</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer__stripe" aria-hidden="true"></div>
+      <div class="shell">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <img
+              src="assets/logo-idb-white.png"
+              alt="IDB Bali — Institut Desain dan Bisnis Bali"
+              width="813"
+              height="532"
+            />
+            <p class="footer__name">Institut Desain dan Bisnis Bali</p>
+            <p class="footer__desc">
+              Sistem Peminjaman Ruangan IDB Bali untuk pengajuan, pemeriksaan, dan pemantauan
+              status dalam satu alur.
+            </p>
+            <address class="footer__address">
+              Jl. Tukad Batanghari No. 29 Panjer<br />
+              Denpasar — Bali 80225
+            </address>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Sistem</h2>
+            <nav class="footer__links" aria-label="Tautan sistem">
+              <a href="ruangan.html">Ruangan &amp; Jadwal</a>
+              <a href="ajukan.html">Ajukan Peminjaman</a>
+              <a href="pengajuan-saya.html">Pengajuan Saya</a>
+            </nav>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Panduan</h2>
+            <nav class="footer__links" aria-label="Tautan panduan">
+              <a href="ajukan.html">Alur pengajuan</a>
+              <a href="ruangan.html">Cek jadwal ruangan</a>
+              <a href="masuk.html?next=petugas.html">Masuk petugas</a>
+            </nav>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Kampus</h2>
+            <nav class="footer__links" aria-label="Tautan kampus">
+              <a href="https://www.idbbali.ac.id/" target="_blank" rel="noopener">Situs resmi ↗</a>
+              <a href="https://www.idbbali.ac.id/fasilitas-kampus/" target="_blank" rel="noopener"
+                >Fasilitas kampus ↗</a
+              >
+              <a href="https://www.idbbali.ac.id/kalender-akademik/" target="_blank" rel="noopener"
+                >Kalender akademik ↗</a
+              >
+            </nav>
+            <div class="footer__social">
+              <a href="https://www.instagram.com/idbbali/" target="_blank" rel="noopener"
+                >Instagram ↗</a
+              >
+              <a href="https://www.youtube.com/c/IDBBali/" target="_blank" rel="noopener"
+                >YouTube ↗</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>© 2026 Institut Desain dan Bisnis Bali</p>
+          <p class="footer__note">
+            Jadwal dan status pengajuan ditampilkan sebagai informasi. Konfirmasi jadwal melalui
+            Bagian Kemahasiswaan.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+      <span id="toast-message"></span>
+      <button class="toast__close" type="button" aria-label="Tutup pemberitahuan" data-toast-close>
+        ×
+      </button>
+    </div>
+
+    <script src="assets/store.js?v=5" defer></script>
+    <script src="assets/ui.js?v=4" defer></script>
+    <script src="assets/app.js?v=9" defer></script>
+  </body>
+</html>

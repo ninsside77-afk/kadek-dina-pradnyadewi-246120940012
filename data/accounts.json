@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "iterations": 260000,
+  "users": [
+    {
+      "id": "peminjam01",
+      "name": "Raka Wijaya",
+      "role": "peminjam",
+      "unit": "HIMA DKV",
+      "active": true,
+      "salt": "bb2833c47ab8531db6ce6f5f896539b5",
+      "hash": "b310bc7a13e5bf94b7d50e36a9c039f2a95738a3c624969a08da1627c9260f4d",
+      "iterations": 260000
+    },
+    {
+      "id": "peminjam02",
+      "name": "Nadia Sari",
+      "role": "peminjam",
+      "unit": "Prodi Arsitektur",
+      "active": true,
+      "salt": "11b4563d55e4b04e20ff350cd6709bcb",
+      "hash": "1efcd922f6e284f45715b36d0897bec507bfa7dbcf9c0c3271e63ad562ad0df6",
+      "iterations": 260000
+    },
+    {
+      "id": "peminjam03",
+      "name": "Fajar Nugraha",
+      "role": "peminjam",
+      "unit": "Prodi Manajemen",
+      "active": true,
+      "salt": "034a943036a52768653bb21d7a51ad29",
+      "hash": "7d3b78591bcbb583448815fa0f6a7e9b1a327db25729ad32a76c6427c61b14c5",
+      "iterations": 260000
+    },
+    {
+      "id": "petugas01",
+      "name": "Petugas Kemahasiswaan",
+      "role": "petugas",
+      "unit": "Bagian Kemahasiswaan",
+      "active": true,
+      "salt": "0f09b948fd5c3d30160974895c42c426",
+      "hash": "1d95de406b6a17ba779f384a3b84365da8786ecc2452bc93ba822baadd62227d",
+      "iterations": 260000
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pengajuan Saya — Peminjaman Ruangan IDB Bali</title>
+    <meta
+      name="description"
+      content="Daftar pengajuan peminjaman ruangan yang Anda kirim beserta status terbarunya."
+    />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="assets/tokens.css?v=5" />
+    <link rel="stylesheet" href="assets/app.css?v=7" />
+    <link rel="stylesheet" href="assets/pages.css?v=10" />
+  </head>
+  <body class="page-sub">
+    <a class="skip" href="#main">Lewati ke konten</a>
+
+    <div class="brandbar">
+      <div class="shell brandbar__inner">
+        <p class="brandbar__campus">
+          <span class="brandbar__mark" aria-hidden="true"></span>
+          <span class="brandbar__full">Institut Desain dan Bisnis Bali</span>
+          <span class="brandbar__short">IDB Bali</span>
+          <span class="brandbar__sep" aria-hidden="true">/</span>
+          <span class="brandbar__place">Denpasar, Bali</span>
+        </p>
+        <div class="brandbar__meta">
+          <span data-today>Sab, 24 Okt 2026</span>
+          <span class="brandbar__sep" aria-hidden="true">·</span>
+          <span>WITA</span>
+          <a class="brandbar__link" href="https://www.idbbali.ac.id/" target="_blank" rel="noopener"
+            >Situs kampus <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="shell header__inner">
+        <a class="brand" href="index.html" aria-label="IDB Bali — Beranda">
+          <img
+            src="assets/logo-idb.png"
+            alt="IDB Bali — Institut Desain dan Bisnis Bali"
+            width="813"
+            height="532"
+          />
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Navigasi utama">
+          <a class="nav__link" href="ruangan.html">Ruangan &amp; Jadwal</a>
+          <a class="nav__link" href="pengajuan-saya.html" aria-current="page">Pengajuan Saya</a>
+        </nav>
+
+        <div class="header__actions">
+          <a class="link-muted" href="masuk.html" data-auth-link>Masuk</a>
+          <a class="btn btn--outline btn--sm" href="ajukan.html">Ajukan Peminjaman</a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav"
+            data-nav-toggle
+          >
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="shell page-head">
+        <div class="page-head__row">
+          <div>
+            <p class="eyebrow">Pengajuan Saya</p>
+            <h1>Status pengajuan Anda</h1>
+            <p class="lede">
+              Setiap pengajuan menampilkan status terbaru dari Bagian Kemahasiswaan. Buka detail
+              untuk melihat alasan keputusan dan langkah berikutnya.
+            </p>
+          </div>
+          <a class="btn btn--accent" href="ajukan.html">Ajukan Peminjaman</a>
+        </div>
+      </div>
+
+      <div class="shell sub-page">
+        <div class="banner banner--info" id="staff-hint" hidden>
+          <div>
+            <p class="banner__title">Anda masuk sebagai petugas.</p>
+            <p>Daftar seluruh pengajuan tersedia di Area petugas.</p>
+          </div>
+          <a class="btn btn--outline btn--sm" href="petugas.html">Buka Area petugas</a>
+        </div>
+
+        <div class="list-toolbar">
+          <div class="chips" role="group" aria-label="Filter status">
+            <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">
+              Semua <span class="chip__count" data-count="all">0</span>
+            </button>
+            <button class="chip" type="button" data-filter="pending" aria-pressed="false">
+              Menunggu <span class="chip__count" data-count="pending">0</span>
+            </button>
+            <button class="chip" type="button" data-filter="approved" aria-pressed="false">
+              Disetujui <span class="chip__count" data-count="approved">0</span>
+            </button>
+            <button class="chip" type="button" data-filter="rejected" aria-pressed="false">
+              Ditolak <span class="chip__count" data-count="rejected">0</span>
+            </button>
+          </div>
+
+          <div class="field field--search">
+            <label class="sr-only" for="cari-pengajuan">Cari pengajuan</label>
+            <input
+              class="input"
+              id="cari-pengajuan"
+              type="search"
+              placeholder="Cari ID atau ruangan"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div id="list" aria-live="polite" aria-busy="true">
+          <div class="skeleton-list" aria-hidden="true">
+            <div class="skeleton-card">
+              <span class="skeleton skeleton--sm"></span>
+              <span class="skeleton skeleton--lg"></span>
+              <span class="skeleton skeleton--md"></span>
+            </div>
+            <div class="skeleton-card">
+              <span class="skeleton skeleton--sm"></span>
+              <span class="skeleton skeleton--lg"></span>
+              <span class="skeleton skeleton--md"></span>
+            </div>
+            <div class="skeleton-card">
+              <span class="skeleton skeleton--sm"></span>
+              <span class="skeleton skeleton--lg"></span>
+              <span class="skeleton skeleton--md"></span>
+            </div>
+          </div>
+        </div>
+
+        <p class="page-note">
+          Buka halaman ini kembali untuk melihat status terbaru.
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer__stripe" aria-hidden="true"></div>
+      <div class="shell">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <img
+              src="assets/logo-idb-white.png"
+              alt="IDB Bali — Institut Desain dan Bisnis Bali"
+              width="813"
+              height="532"
+            />
+            <p class="footer__name">Institut Desain dan Bisnis Bali</p>
+            <p class="footer__desc">
+              Sistem Peminjaman Ruangan IDB Bali untuk pengajuan, pemeriksaan, dan pemantauan
+              status dalam satu alur.
+            </p>
+            <address class="footer__address">
+              Jl. Tukad Batanghari No. 29 Panjer<br />
+              Denpasar — Bali 80225
+            </address>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Sistem</h2>
+            <nav class="footer__links" aria-label="Tautan sistem">
+              <a href="ruangan.html">Ruangan &amp; Jadwal</a>
+              <a href="ajukan.html">Ajukan Peminjaman</a>
+              <a href="pengajuan-saya.html">Pengajuan Saya</a>
+            </nav>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Panduan</h2>
+            <nav class="footer__links" aria-label="Tautan panduan">
+              <a href="ajukan.html">Alur pengajuan</a>
+              <a href="ruangan.html">Cek jadwal ruangan</a>
+              <a href="masuk.html?next=petugas.html">Masuk petugas</a>
+            </nav>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Kampus</h2>
+            <nav class="footer__links" aria-label="Tautan kampus">
+              <a href="https://www.idbbali.ac.id/" target="_blank" rel="noopener">Situs resmi ↗</a>
+              <a href="https://www.idbbali.ac.id/fasilitas-kampus/" target="_blank" rel="noopener"
+                >Fasilitas kampus ↗</a
+              >
+              <a href="https://www.idbbali.ac.id/kalender-akademik/" target="_blank" rel="noopener"
+                >Kalender akademik ↗</a
+              >
+            </nav>
+            <div class="footer__social">
+              <a href="https://www.instagram.com/idbbali/" target="_blank" rel="noopener"
+                >Instagram ↗</a
+              >
+              <a href="https://www.youtube.com/c/IDBBali/" target="_blank" rel="noopener"
+                >YouTube ↗</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>© 2026 Institut Desain dan Bisnis Bali</p>
+          <p class="footer__note">
+            Jadwal dan status pengajuan ditampilkan sebagai informasi. Konfirmasi jadwal melalui
+            Bagian Kemahasiswaan.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/store.js?v=5" defer></script>
+    <script src="assets/ui.js?v=4" defer></script>
+    <script src="assets/saya.js?v=3" defer></script>
+  </body>
+</html>

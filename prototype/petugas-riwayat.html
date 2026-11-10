@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Riwayat Keputusan — Petugas IDB Bali</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="assets/tokens.css?v=5" />
+    <link rel="stylesheet" href="assets/app.css?v=7" />
+    <link rel="stylesheet" href="assets/pages.css?v=10" />
+    <link rel="stylesheet" href="assets/staff.css?v=4" />
+  </head>
+  <body class="staff-body">
+    <a class="skip" href="#main">Lewati ke konten</a>
+
+    <div class="staff">
+      <aside class="rail">
+        <div class="rail__brand">
+          <img src="assets/logo-idb.png" alt="IDB Bali" width="813" height="532" />
+          <span class="rail__brand-text">IDB · PETUGAS</span>
+        </div>
+
+        <nav class="rail__nav" aria-label="Navigasi petugas">
+          <a class="rail__link" href="petugas.html">
+            Daftar Pengajuan
+            <span class="rail__count" id="rail-pending">0</span>
+          </a>
+          <a class="rail__link" href="petugas-riwayat.html" aria-current="page">
+            Riwayat Keputusan
+          </a>
+          <a class="rail__link rail__link--soft" href="ruangan.html">Papan Jadwal</a>
+        </nav>
+
+        <div class="rail__user">
+          <p class="rail__user-name" data-officer-name>Petugas</p>
+          <p class="rail__user-role">Bagian Kemahasiswaan</p>
+          <button class="rail__logout" type="button" data-logout>Keluar</button>
+        </div>
+      </aside>
+
+      <main id="main" class="staff-main">
+        <header class="staff-head">
+          <p class="eyebrow">Bagian Kemahasiswaan</p>
+          <h1>Riwayat Keputusan</h1>
+          <p class="lede">
+            Keputusan yang sudah tersimpan, diurutkan dari yang terbaru. Riwayat mencatat waktu dan
+            nama petugas yang memutuskan.
+          </p>
+        </header>
+
+        <div class="staff-toolbar">
+          <div class="tabs" role="group" aria-label="Filter keputusan">
+            <button class="tab is-active" type="button" data-tab="all" aria-pressed="true">
+              Semua <span class="tab__count" data-tab-count="all">0</span>
+            </button>
+            <button class="tab" type="button" data-tab="approved" aria-pressed="false">
+              Disetujui <span class="tab__count" data-tab-count="approved">0</span>
+            </button>
+            <button class="tab" type="button" data-tab="rejected" aria-pressed="false">
+              Ditolak <span class="tab__count" data-tab-count="rejected">0</span>
+            </button>
+          </div>
+
+          <div class="field field--search staff-search">
+            <label class="sr-only" for="cari-riwayat">Cari riwayat</label>
+            <input
+              class="input"
+              id="cari-riwayat"
+              type="search"
+              placeholder="Cari ID atau nama"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <p class="staff-count" id="result-count" aria-live="polite"></p>
+
+        <div id="history" aria-busy="true">
+          <div class="skeleton-table" aria-hidden="true">
+            <span class="skeleton skeleton--xl"></span>
+            <span class="skeleton skeleton--xl"></span>
+            <span class="skeleton skeleton--xl"></span>
+            <span class="skeleton skeleton--xl"></span>
+          </div>
+        </div>
+
+        <p class="staff-foot-note">
+          Riwayat keputusan hanya dapat dibuka oleh petugas Bagian Kemahasiswaan yang sudah masuk.
+        </p>
+      </main>
+    </div>
+
+    <script src="assets/store.js?v=5" defer></script>
+    <script src="assets/ui.js?v=4" defer></script>
+    <script src="assets/riwayat.js?v=3" defer></script>
+  </body>
+</html>

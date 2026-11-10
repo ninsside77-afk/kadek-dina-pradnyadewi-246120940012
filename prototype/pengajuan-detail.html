@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detail Pengajuan — Peminjaman Ruangan IDB Bali</title>
+    <meta
+      name="description"
+      content="Detail pengajuan peminjaman ruangan, riwayat status, alasan keputusan, dan status surat."
+    />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="assets/tokens.css?v=5" />
+    <link rel="stylesheet" href="assets/app.css?v=7" />
+    <link rel="stylesheet" href="assets/pages.css?v=10" />
+  </head>
+  <body class="page-sub">
+    <a class="skip" href="#main">Lewati ke konten</a>
+
+    <div class="brandbar">
+      <div class="shell brandbar__inner">
+        <p class="brandbar__campus">
+          <span class="brandbar__mark" aria-hidden="true"></span>
+          <span class="brandbar__full">Institut Desain dan Bisnis Bali</span>
+          <span class="brandbar__short">IDB Bali</span>
+          <span class="brandbar__sep" aria-hidden="true">/</span>
+          <span class="brandbar__place">Denpasar, Bali</span>
+        </p>
+        <div class="brandbar__meta">
+          <span data-today>Sab, 24 Okt 2026</span>
+          <span class="brandbar__sep" aria-hidden="true">·</span>
+          <span>WITA</span>
+          <a class="brandbar__link" href="https://www.idbbali.ac.id/" target="_blank" rel="noopener"
+            >Situs kampus <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="shell header__inner">
+        <a class="brand" href="index.html" aria-label="IDB Bali — Beranda">
+          <img
+            src="assets/logo-idb.png"
+            alt="IDB Bali — Institut Desain dan Bisnis Bali"
+            width="813"
+            height="532"
+          />
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Navigasi utama">
+          <a class="nav__link" href="ruangan.html">Ruangan &amp; Jadwal</a>
+          <a class="nav__link" href="pengajuan-saya.html" aria-current="page">Pengajuan Saya</a>
+        </nav>
+
+        <div class="header__actions">
+          <a class="link-muted" href="masuk.html" data-auth-link>Masuk</a>
+          <a class="btn btn--outline btn--sm" href="ajukan.html">Ajukan Peminjaman</a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav"
+            data-nav-toggle
+          >
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="shell sub-page detail-page">
+        <nav class="breadcrumb" aria-label="Remah roti">
+          <a href="pengajuan-saya.html">Pengajuan Saya</a>
+          <span aria-hidden="true">/</span>
+          <span id="crumb-id">Detail</span>
+        </nav>
+
+        <div id="loading" class="skeleton-detail" aria-hidden="true">
+          <span class="skeleton skeleton--sm"></span>
+          <span class="skeleton skeleton--xl"></span>
+          <span class="skeleton skeleton--md"></span>
+        </div>
+
+        <div id="notfound" class="empty empty--page" hidden>
+          <h1>Pengajuan tidak ditemukan</h1>
+          <p>Pengajuan tidak ditemukan atau Anda tidak memiliki izin untuk melihatnya.</p>
+          <a class="btn btn--outline" href="pengajuan-saya.html">Kembali ke Pengajuan Saya</a>
+        </div>
+
+        <div id="detail" hidden>
+          <header class="detail-head">
+            <div>
+              <p class="eyebrow">Detail pengajuan</p>
+              <div class="detail-head__id">
+                <h1 id="detail-id">IDB-2026-0000</h1>
+                <span class="badge" id="detail-badge"></span>
+              </div>
+              <p class="lede" id="detail-purpose"></p>
+            </div>
+            <div class="detail-head__actions">
+              <a class="btn btn--outline btn--sm" href="pengajuan-saya.html">Kembali ke daftar</a>
+            </div>
+          </header>
+
+          <section class="status-panel" id="status-panel" aria-labelledby="status-title">
+            <h2 id="status-title" class="status-panel__title"></h2>
+            <p class="status-panel__message" id="status-message"></p>
+            <div class="status-panel__reason" id="status-reason" hidden>
+              <p class="status-panel__reason-label">Alasan penolakan</p>
+              <p id="status-reason-text"></p>
+            </div>
+            <p class="status-panel__meta" id="status-meta"></p>
+          </section>
+
+          <div class="detail-grid">
+            <div class="detail-main">
+              <section class="panel" aria-labelledby="panel-peminjam">
+                <div class="panel__head">
+                  <h2 id="panel-peminjam">Peminjam</h2>
+                </div>
+                <dl class="data-list">
+                  <div><dt>ORMAWA/Prodi</dt><dd id="d-ormawa"></dd></div>
+                  <div><dt>Nama mahasiswa</dt><dd id="d-nama"></dd></div>
+                  <div><dt>Nomor HP</dt><dd id="d-hp"></dd></div>
+                </dl>
+              </section>
+
+              <section class="panel" aria-labelledby="panel-pinjam">
+                <div class="panel__head">
+                  <h2 id="panel-pinjam">Peminjaman</h2>
+                </div>
+                <dl class="data-list">
+                  <div><dt>Ruangan</dt><dd id="d-ruangan"></dd></div>
+                  <div><dt>Tanggal</dt><dd id="d-tanggal"></dd></div>
+                  <div><dt>Waktu</dt><dd id="d-waktu"></dd></div>
+                  <div><dt>Durasi</dt><dd id="d-durasi"></dd></div>
+                  <div><dt>Jumlah peserta</dt><dd id="d-peserta"></dd></div>
+                  <div class="data-list__wide">
+                    <dt>Keperluan</dt><dd id="d-keperluan"></dd>
+                  </div>
+                  <div class="data-list__wide">
+                    <dt>Kebutuhan alat</dt><dd id="d-alat"></dd>
+                  </div>
+                </dl>
+                <p class="panel__note" id="alat-note" hidden>
+                  Pencatatan kebutuhan alat tidak otomatis menjamin ketersediaannya.
+                </p>
+              </section>
+
+              <section class="panel" aria-labelledby="panel-langkah">
+                <div class="panel__head">
+                  <h2 id="panel-langkah">Langkah berikutnya</h2>
+                </div>
+                <div id="next-steps" class="next-steps"></div>
+              </section>
+            </div>
+
+            <aside class="detail-side">
+              <section class="panel" aria-labelledby="panel-riwayat">
+                <div class="panel__head">
+                  <h2 id="panel-riwayat">Riwayat status</h2>
+                </div>
+                <ol class="timeline" id="timeline"></ol>
+              </section>
+
+              <section class="panel" aria-labelledby="panel-surat">
+                <div class="panel__head">
+                  <h2 id="panel-surat">Surat peminjaman</h2>
+                </div>
+                <div class="letter" id="letter">
+                  <p class="letter__state" id="letter-state"></p>
+                  <p class="letter__note" id="letter-note"></p>
+                  <a
+                    class="btn btn--accent btn--block letter__download"
+                    id="letter-download"
+                    href="#"
+                    download
+                    hidden
+                    >Unduh surat PDF</a
+                  >
+                </div>
+              </section>
+
+              <div class="detail-actions" id="detail-actions"></div>
+            </aside>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer__stripe" aria-hidden="true"></div>
+      <div class="shell">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <img
+              src="assets/logo-idb-white.png"
+              alt="IDB Bali — Institut Desain dan Bisnis Bali"
+              width="813"
+              height="532"
+            />
+            <p class="footer__name">Institut Desain dan Bisnis Bali</p>
+            <p class="footer__desc">
+              Sistem Peminjaman Ruangan IDB Bali untuk pengajuan, pemeriksaan, dan pemantauan
+              status dalam satu alur.
+            </p>
+            <address class="footer__address">
+              Jl. Tukad Batanghari No. 29 Panjer<br />
+              Denpasar — Bali 80225
+            </address>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Sistem</h2>
+            <nav class="footer__links" aria-label="Tautan sistem">
+              <a href="ruangan.html">Ruangan &amp; Jadwal</a>
+              <a href="ajukan.html">Ajukan Peminjaman</a>
+              <a href="pengajuan-saya.html">Pengajuan Saya</a>
+            </nav>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Panduan</h2>
+            <nav class="footer__links" aria-label="Tautan panduan">
+              <a href="ajukan.html">Alur pengajuan</a>
+              <a href="ruangan.html">Cek jadwal ruangan</a>
+              <a href="masuk.html?next=petugas.html">Masuk petugas</a>
+            </nav>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Kampus</h2>
+            <nav class="footer__links" aria-label="Tautan kampus">
+              <a href="https://www.idbbali.ac.id/" target="_blank" rel="noopener">Situs resmi ↗</a>
+              <a href="https://www.idbbali.ac.id/fasilitas-kampus/" target="_blank" rel="noopener"
+                >Fasilitas kampus ↗</a
+              >
+              <a href="https://www.idbbali.ac.id/kalender-akademik/" target="_blank" rel="noopener"
+                >Kalender akademik ↗</a
+              >
+            </nav>
+            <div class="footer__social">
+              <a href="https://www.instagram.com/idbbali/" target="_blank" rel="noopener"
+                >Instagram ↗</a
+              >
+              <a href="https://www.youtube.com/c/IDBBali/" target="_blank" rel="noopener"
+                >YouTube ↗</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>© 2026 Institut Desain dan Bisnis Bali</p>
+          <p class="footer__note">
+            Jadwal dan status pengajuan ditampilkan sebagai informasi. Konfirmasi jadwal melalui
+            Bagian Kemahasiswaan.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/store.js?v=5" defer></script>
+    <script src="assets/ui.js?v=4" defer></script>
+    <script src="assets/detail.js?v=3" defer></script>
+  </body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ruangan &amp; Jadwal — Peminjaman Ruangan IDB Bali</title>
+    <meta
+      name="description"
+      content="Daftar ruangan dan jadwal peminjaman yang tercatat di IDB Bali."
+    />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="assets/tokens.css?v=5" />
+    <link rel="stylesheet" href="assets/app.css?v=7" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Lewati ke konten</a>
+
+    <div class="brandbar">
+      <div class="shell brandbar__inner">
+        <p class="brandbar__campus">
+          <span class="brandbar__mark" aria-hidden="true"></span>
+          <span class="brandbar__full">Institut Desain dan Bisnis Bali</span>
+          <span class="brandbar__short">IDB Bali</span>
+          <span class="brandbar__sep" aria-hidden="true">/</span>
+          <span class="brandbar__place">Denpasar, Bali</span>
+        </p>
+        <div class="brandbar__meta">
+          <span data-today>Sab, 24 Okt 2026</span>
+          <span class="brandbar__sep" aria-hidden="true">·</span>
+          <span>WITA</span>
+          <a class="brandbar__link" href="https://www.idbbali.ac.id/" target="_blank" rel="noopener"
+            >Situs kampus <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="shell header__inner">
+        <a class="brand" href="index.html" aria-label="IDB Bali — Beranda">
+          <img
+            src="assets/logo-idb.png"
+            alt="IDB Bali — Institut Desain dan Bisnis Bali"
+            width="813"
+            height="532"
+          />
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Navigasi utama">
+          <a class="nav__link" href="ruangan.html" aria-current="page">Ruangan &amp; Jadwal</a>
+          <a class="nav__link" href="pengajuan-saya.html">Pengajuan Saya</a>
+        </nav>
+
+        <div class="header__actions">
+          <a class="link-muted" href="masuk.html" data-auth-link>Masuk</a>
+          <a class="btn btn--outline btn--sm" href="ajukan.html">Ajukan Peminjaman</a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav"
+            data-nav-toggle
+          >
+            Menu
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="shell page-head">
+        <div class="page-head__row">
+          <div>
+            <p class="eyebrow">Ruang &amp; Waktu</p>
+            <h1>Ruangan &amp; Jadwal</h1>
+            <p class="lede">
+              Jadwal di bawah adalah peminjaman yang sudah tercatat. Pilih ruangan dan waktu untuk
+              membuka formulir pengajuan.
+            </p>
+          </div>
+          <a class="btn btn--accent" href="ajukan.html">Ajukan Peminjaman</a>
+        </div>
+      </div>
+
+      <div class="filters">
+        <div class="shell filters__inner">
+          <div class="field date-field" data-datepicker data-allow-sunday="true">
+            <span class="label" id="lbl-filter-date">Tanggal</span>
+            <div class="date-control">
+              <button
+                type="button"
+                class="date-trigger"
+                data-trigger
+                aria-expanded="false"
+                aria-haspopup="dialog"
+                aria-labelledby="lbl-filter-date tanggal-nilai"
+              >
+                <span data-display id="tanggal-nilai">Pilih tanggal</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1.5" y="2.5" width="13" height="12" rx="1.5" stroke="#54595F" />
+                  <path d="M1.5 6.5h13M5 1v3M11 1v3" stroke="#54595F" />
+                </svg>
+              </button>
+              <div class="picker" data-picker hidden role="dialog" aria-label="Pilih tanggal"></div>
+            </div>
+            <input type="hidden" data-input />
+          </div>
+
+          <div class="field">
+            <label for="filter-gedung">Gedung</label>
+            <select class="select" id="filter-gedung">
+              <option value="">Semua gedung</option>
+            </select>
+          </div>
+
+          <div class="field field--grow">
+            <label for="filter-cari">Cari ruangan</label>
+            <input
+              class="input"
+              id="filter-cari"
+              type="search"
+              placeholder="Nama ruangan"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="filters__right">
+            <div class="seg" role="group" aria-label="Tampilan jadwal">
+              <button type="button" data-view-btn="board" aria-pressed="true">Papan</button>
+              <button type="button" data-view-btn="list" aria-pressed="false">Daftar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shell board-section">
+        <div class="board-meta">
+          <p id="board-status">Memuat jadwal…</p>
+          <p class="mono" id="board-date"></p>
+        </div>
+
+        <div class="view" data-view="board">
+          <div id="board" class="board" role="group" aria-label="Papan jadwal ruangan"></div>
+          <div class="agenda" id="agenda"></div>
+
+          <div class="legend">
+            <span class="legend__item"
+              ><i class="legend__swatch legend__swatch--ok" aria-hidden="true"></i>Disetujui</span
+            >
+            <span class="legend__item"
+              ><i class="legend__swatch legend__swatch--wait" aria-hidden="true"></i>Menunggu
+              pemeriksaan</span
+            >
+            <span class="legend__item"
+              ><i class="legend__swatch legend__swatch--clash" aria-hidden="true"></i>Bentrok</span
+            >
+            <span class="legend__item legend__hint">Klik area kosong untuk mengisi formulir</span>
+          </div>
+
+          <p class="board__note">
+            Sumbu waktu menampilkan rentang 07.00–18.00 WITA. Belum ada jadwal tercatat bukan berarti
+            ruangan otomatis tersedia.
+          </p>
+        </div>
+
+        <div class="view" data-view="list" hidden>
+          <div class="room-list" id="room-list"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer__stripe" aria-hidden="true"></div>
+      <div class="shell">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <img
+              src="assets/logo-idb-white.png"
+              alt="IDB Bali — Institut Desain dan Bisnis Bali"
+              width="813"
+              height="532"
+            />
+            <p class="footer__name">Institut Desain dan Bisnis Bali</p>
+            <p class="footer__desc">
+              Sistem Peminjaman Ruangan IDB Bali untuk pengajuan, pemeriksaan, dan pemantauan
+              status dalam satu alur.
+            </p>
+            <address class="footer__address">
+              Jl. Tukad Batanghari No. 29 Panjer<br />
+              Denpasar — Bali 80225
+            </address>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Sistem</h2>
+            <nav class="footer__links" aria-label="Tautan sistem">
+              <a href="ruangan.html">Ruangan &amp; Jadwal</a>
+              <a href="ajukan.html">Ajukan Peminjaman</a>
+              <a href="pengajuan-saya.html">Pengajuan Saya</a>
+            </nav>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Panduan</h2>
+            <nav class="footer__links" aria-label="Tautan panduan">
+              <a href="ajukan.html">Alur pengajuan</a>
+              <a href="ruangan.html">Cek jadwal ruangan</a>
+              <a href="masuk.html?next=petugas.html">Masuk petugas</a>
+            </nav>
+          </div>
+
+          <div class="footer__col">
+            <h2 class="footer__heading">Kampus</h2>
+            <nav class="footer__links" aria-label="Tautan kampus">
+              <a href="https://www.idbbali.ac.id/" target="_blank" rel="noopener">Situs resmi ↗</a>
+              <a href="https://www.idbbali.ac.id/fasilitas-kampus/" target="_blank" rel="noopener"
+                >Fasilitas kampus ↗</a
+              >
+              <a href="https://www.idbbali.ac.id/kalender-akademik/" target="_blank" rel="noopener"
+                >Kalender akademik ↗</a
+              >
+            </nav>
+            <div class="footer__social">
+              <a href="https://www.instagram.com/idbbali/" target="_blank" rel="noopener"
+                >Instagram ↗</a
+              >
+              <a href="https://www.youtube.com/c/IDBBali/" target="_blank" rel="noopener"
+                >YouTube ↗</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>© 2026 Institut Desain dan Bisnis Bali</p>
+          <p class="footer__note">
+            Jadwal dan status pengajuan ditampilkan sebagai informasi. Konfirmasi jadwal melalui
+            Bagian Kemahasiswaan.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+      <span id="toast-message"></span>
+      <button class="toast__close" type="button" aria-label="Tutup pemberitahuan" data-toast-close>
+        ×
+      </button>
+    </div>
+
+    <script src="assets/store.js?v=5" defer></script>
+    <script src="assets/ui.js?v=4" defer></script>
+    <script src="assets/app.js?v=9" defer></script>
+  </body>
+</html>

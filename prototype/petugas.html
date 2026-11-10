@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daftar Pengajuan — Petugas IDB Bali</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="assets/tokens.css?v=5" />
+    <link rel="stylesheet" href="assets/app.css?v=7" />
+    <link rel="stylesheet" href="assets/pages.css?v=10" />
+    <link rel="stylesheet" href="assets/staff.css?v=4" />
+  </head>
+  <body class="staff-body">
+    <a class="skip" href="#main">Lewati ke konten</a>
+
+    <div class="staff">
+      <aside class="rail">
+        <div class="rail__brand">
+          <img
+            src="assets/logo-idb.png"
+            alt="IDB Bali"
+            width="813"
+            height="532"
+          />
+          <span class="rail__brand-text">IDB · PETUGAS</span>
+        </div>
+
+        <nav class="rail__nav" aria-label="Navigasi petugas">
+          <a class="rail__link" href="petugas.html" aria-current="page">
+            Daftar Pengajuan
+            <span class="rail__count" id="rail-pending">0</span>
+          </a>
+          <a class="rail__link" href="petugas-riwayat.html">Riwayat Keputusan</a>
+          <a class="rail__link rail__link--soft" href="ruangan.html">Papan Jadwal</a>
+        </nav>
+
+        <div class="rail__user">
+          <p class="rail__user-name" data-officer-name>Petugas</p>
+          <p class="rail__user-role">Bagian Kemahasiswaan</p>
+          <button class="rail__logout" type="button" data-logout>Keluar</button>
+        </div>
+      </aside>
+
+      <main id="main" class="staff-main">
+        <header class="staff-head">
+          <p class="eyebrow">Bagian Kemahasiswaan</p>
+          <h1>Daftar Pengajuan</h1>
+          <p class="lede">
+            Periksa data dan jadwal sebelum memberi keputusan. Pengajuan yang menunggu diurutkan
+            dari yang paling lama.
+          </p>
+        </header>
+
+        <div class="banner banner--warn" id="conflict-summary" hidden>
+          <div>
+            <p class="banner__title">Ada pengajuan yang perlu diperiksa jadwalnya.</p>
+            <p id="conflict-text"></p>
+          </div>
+          <a class="btn btn--outline btn--sm" href="ruangan.html">Buka papan jadwal</a>
+        </div>
+
+        <div class="stat-grid" aria-label="Ringkasan pengajuan">
+          <article class="stat stat--pending">
+            <span class="stat__label">Menunggu</span>
+            <span class="stat__value" id="stat-pending">0</span>
+            <span class="stat__note">perlu diperiksa</span>
+          </article>
+          <article class="stat">
+            <span class="stat__label">Disetujui</span>
+            <span class="stat__value" id="stat-approved">0</span>
+            <span class="stat__note">keputusan tersimpan</span>
+          </article>
+          <article class="stat">
+            <span class="stat__label">Ditolak</span>
+            <span class="stat__value" id="stat-rejected">0</span>
+            <span class="stat__note">dengan atau tanpa alasan</span>
+          </article>
+          <article class="stat">
+            <span class="stat__label">Total</span>
+            <span class="stat__value" id="stat-total">0</span>
+            <span class="stat__note">seluruh pengajuan</span>
+          </article>
+        </div>
+
+        <div class="staff-toolbar">
+          <div class="tabs" role="group" aria-label="Filter status pengajuan">
+            <button class="tab is-active" type="button" data-tab="pending" aria-pressed="true">
+              Menunggu <span class="tab__count" data-tab-count="pending">0</span>
+            </button>
+            <button class="tab" type="button" data-tab="approved" aria-pressed="false">
+              Disetujui <span class="tab__count" data-tab-count="approved">0</span>
+            </button>
+            <button class="tab" type="button" data-tab="rejected" aria-pressed="false">
+              Ditolak <span class="tab__count" data-tab-count="rejected">0</span>
+            </button>
+            <button class="tab" type="button" data-tab="all" aria-pressed="false">
+              Semua <span class="tab__count" data-tab-count="all">0</span>
+            </button>
+          </div>
+
+          <div class="field field--search staff-search">
+            <label class="sr-only" for="cari">Cari pengajuan</label>
+            <input
+              class="input"
+              id="cari"
+              type="search"
+              placeholder="Cari ID, nama, atau ruangan"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <p class="staff-count" id="result-count" aria-live="polite"></p>
+
+        <div id="queue" aria-busy="true">
+          <div class="skeleton-table" aria-hidden="true">
+            <span class="skeleton skeleton--xl"></span>
+            <span class="skeleton skeleton--xl"></span>
+            <span class="skeleton skeleton--xl"></span>
+            <span class="skeleton skeleton--xl"></span>
+            <span class="skeleton skeleton--xl"></span>
+            <span class="skeleton skeleton--xl"></span>
+          </div>
+        </div>
+
+        <p class="staff-foot-note">
+          Setiap keputusan mencatat waktu dan nama petugas yang sedang masuk.
+        </p>
+      </main>
+    </div>
+
+    <script src="assets/store.js?v=5" defer></script>
+    <script src="assets/ui.js?v=4" defer></script>
+    <script src="assets/petugas.js?v=3" defer></script>
+  </body>
+</html>
