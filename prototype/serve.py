@@ -32,8 +32,8 @@ DATA_DIR = os.path.join(PROJECT_DIR, "data")
 ACCOUNTS_FILE = os.path.join(DATA_DIR, "accounts.json")
 BOOKINGS_FILE = os.path.join(DATA_DIR, "bookings.json")
 
-HOST = "127.0.0.1"
-PORT = 8080
+HOST = "0.0.0.0"
+PORT = int(os.environ.get("PORT", 8080))
 SESSION_COOKIE = "idb_session"
 SESSION_TTL = 8 * 3600
 MAX_BODY = 16 * 1024
@@ -1161,9 +1161,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return user
 
     def session_cookie(self, token, clear=False):
+        secure = "; Secure" if self.headers.get("X-Forwarded-Proto") == "https" else ""
         if clear:
-            return "%s=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0" % SESSION_COOKIE
-        return "%s=%s; Path=/; HttpOnly; SameSite=Lax; Max-Age=%d" % (SESSION_COOKIE, token, SESSION_TTL)
+            return "%s=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0%s" % (SESSION_COOKIE, secure)
+        return "%s=%s; Path=/; HttpOnly; SameSite=Lax; Max-Age=%d%s" % (
+            SESSION_COOKIE, token, SESSION_TTL, secure
+        )
 
     # ---------- Respons ----------
 
@@ -1221,10 +1224,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def check_origin(self):
         origin = self.headers.get("Origin")
         if origin:
-            port = self.server.server_address[1]
-            allowed = {"http://127.0.0.1:%d" % port, "http://localhost:%d" % port}
-            if origin not in allowed:
-                raise ApiError(403, "forbidden", "Permintaan ditolak.")
+            host = self.headers.get("Host", "")
+            if urllib.parse.urlsplit(origin).netloc != host:
+            raise ApiError(403, "forbidden", "Permintaan ditolak.")
         fetch_site = self.headers.get("Sec-Fetch-Site")
         if fetch_site and fetch_site not in ("same-origin", "none"):
             raise ApiError(403, "forbidden", "Permintaan ditolak.")
@@ -1283,7 +1285,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             user, token = self.store.login(
                 data.get("userId", ""),
                 data.get("password", ""),
-                self.client_address[0],
+                (self.headers.get("X-Forwarded-For", "").split(",")[0].strip()
+                 or self.client_address[0]),
                 data.get("role", ""),
             )
             self.send_json(
